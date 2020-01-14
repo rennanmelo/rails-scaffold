@@ -5,7 +5,8 @@ class UserTest < ActiveSupport::TestCase
   #   assert true
   # end
 
-  test "the sum should be valid" do
-    assert 2==3, "The result should be true"
+  test "user should respond to name" do
+    user = User.new
+    assert_respond_to user, :name
   end
 end
