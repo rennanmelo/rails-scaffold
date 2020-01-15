@@ -9,4 +9,14 @@ class BlogFlowTest < ActionDispatch::IntegrationTest
     get root_path
     assert_select "h1", "Articles"
   end
+
+  test "can create an article" do
+    get '/articles/new'
+    assert_response :success
+    post "/articles", params: { article: { title: "My post title", content: "My post content"} }
+    assert_response :redirect
+    follow_redirect!
+    assert_response :success
+    assert_select "p", "Article was successfully created."
+  end
 end
