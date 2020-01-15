@@ -57,4 +57,11 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_recognizes({controller: "articles", action: "index"}, "articles")
     assert_recognizes({controller: "articles", action: "destroy", id: "8"}, {path: "articles/8", method: :delete})
   end
+
+  test "should list all recorded articles" do
+    get root_path
+    assert_select 'table tbody tr' do |elements|
+      assert_equal elements.count, Article.count
+    end
+  end
 end
