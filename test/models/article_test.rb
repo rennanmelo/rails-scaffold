@@ -10,4 +10,7 @@ class ArticleTest < ActiveSupport::TestCase
     assert_not article.save, "article saved without title"    
   end
 
+  test "should do some interesting with stored state" do
+    assert_equal 1002, Article.count
+  end
 end
