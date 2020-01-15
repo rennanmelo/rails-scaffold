@@ -7,3 +7,7 @@ one:
 two:
   title: MyString
   content: MyString
+
+uncap:
+  title: Uncapitalized TiTle
+  content: Some content...
