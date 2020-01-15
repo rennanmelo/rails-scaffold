@@ -45,4 +45,11 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to articles_url
   end
+
+  test "should identify routes" do
+    assert_generates "/articles", controller: "articles", action: "index"
+    assert_generates "/articles/1", controller: "articles", action: "show", id: "1"
+    assert_generates "/articles/new", controller: "articles", action: "new"
+    assert_generates "/articles/8/edit", controller: "articles", action: "edit", id: "8"
+  end
 end
