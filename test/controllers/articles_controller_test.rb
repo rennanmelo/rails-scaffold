@@ -51,5 +51,10 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_generates "/articles/1", controller: "articles", action: "show", id: "1"
     assert_generates "/articles/new", controller: "articles", action: "new"
     assert_generates "/articles/8/edit", controller: "articles", action: "edit", id: "8"
+
+    # At the route /articles with method post we call controller articles and action create?
+    assert_recognizes({controller: "articles", action: "create"}, {path: "articles", method: :post})
+    assert_recognizes({controller: "articles", action: "index"}, "articles")
+    assert_recognizes({controller: "articles", action: "destroy", id: "8"}, {path: "articles/8", method: :delete})
   end
 end
